@@ -1273,13 +1273,14 @@ function getPlayerOverall(p){
   return Math.round(soma / attrs.length);
 }
 /* classificação de estrelas 100% automática, calculada a partir do overall:
-   0-60 → 1★ | 61-65 → 2★ | 66-70 → 3★ | 71-85 → 4★ | 86-99 → 5★ */
+   50-55 → 1★ | 56-61 → 2★ | 62-69 → 3★ | 70-79 → 4★ | 80-99 → 5★
+   (overalls abaixo de 50 caem na faixa mínima de 1★) */
 function getPlayerStars(p){
   const ov = getPlayerOverall(p);
-  if(ov <= 60) return 1;
-  if(ov <= 65) return 2;
-  if(ov <= 70) return 3;
-  if(ov <= 85) return 4;
+  if(ov <= 55) return 1;
+  if(ov <= 61) return 2;
+  if(ov <= 69) return 3;
+  if(ov <= 79) return 4;
   return 5;
 }
 function renderPlayerAttrs(p){
